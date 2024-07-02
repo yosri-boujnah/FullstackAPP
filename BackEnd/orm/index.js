@@ -14,10 +14,10 @@ const db = {};
 
 db.Sequelize = Sequelize;
 
-db.Client = //require the Client model
-db.Freelances = //require the Freelances model
-db.Talents = //require the Talents model
-db.Talents_has_client= // require the Talents_has_client model
+db.Client = require('./client.model')
+db.Freelances = require('./freelances.model')
+db.Talents = require('./talents.model')
+db.Talents_has_client= require('./talentsClient.model')
 
 
 
