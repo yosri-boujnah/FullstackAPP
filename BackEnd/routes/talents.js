@@ -2,11 +2,12 @@ const express = require('express')
 const router = express.Router()
 
 
-const { getAllTalents} = require('../controllers/talents.js');
+const { getAllTalents,addTalent} = require('../controllers/talents.js');
 
 
 
 router.get('/getAll', getAllTalents)
+router.post('/add',addTalent)
 
 
 
