@@ -1,13 +1,14 @@
-const db = require('../orm/index.js')
-
-
-const getAllTalents = (req, res) => {
-   db.Talents.findAll().then((results) => {
-        res.json(results[0])
-    }).catch((err) => { res.status(500).send(err) })
-}
+const {Talent} = require('../orm')
 
 
 module.exports = {
-  getAllTalents 
+  getAllTalents: async (req, res) => {
+    try {
+      const talents = await Talent.findAll();
+      res.status(200).json(talents);
+    } catch (error) {
+        console.log(error);
+      res.status(500).send("Failed to load resource");
+    }
+  },
 }

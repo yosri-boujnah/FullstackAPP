@@ -1,7 +1,8 @@
-// Define and export the sequelize model that represents the table client.
+// Define and export the sequelize model that represents the table freelances.
 
 module.exports = (sequelize, DataTypes) => {
-    const Client = sequelize.define("clients", {
+    const Freelancer = sequelize.define("freelancer", {
+      
       name: {
         type: DataTypes.STRING,
         allowNull: false,
@@ -29,5 +30,5 @@ module.exports = (sequelize, DataTypes) => {
       },
     });
   
-    return Client;
+    return Freelancer;
   };

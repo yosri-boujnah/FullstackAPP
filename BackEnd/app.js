@@ -6,7 +6,7 @@ app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 const port = 5000
 
-const db = require ("./database/index.js")
+const db= require('./orm/index.js')
 const routersTalents = require ("./routes/talents.js")
 
 

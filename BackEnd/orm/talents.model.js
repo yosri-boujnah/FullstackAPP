@@ -4,21 +4,32 @@ module.exports = (sequelize, DataTypes) => {
   const Talents = sequelize.define("talents", {
     title: {
       type: DataTypes.STRING,
+      allowNull: false,
     },
-    descreption: {
+    description: {
       type: DataTypes.STRING,
+      allowNull: false,
     },
     imageUrl: {
       type: DataTypes.STRING,
+      allowNull: false,
     },
     price: {
-      type: DataTypes.STRING,
+      type: DataTypes.INTEGER,
+      allowNull: false,
     },
     category: {
       type: DataTypes.STRING,
+      allowNull: false,
     },
     rating: {
       type: DataTypes.STRING,
+      allowNull: false,
+    },
+   
+    freelancer_id:{
+      type: DataTypes.INTEGER,
+      allowNull: false,
     }
    
   });
