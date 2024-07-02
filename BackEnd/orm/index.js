@@ -26,7 +26,7 @@ db.Freelance.hasMany(db.Talent, {
 });
 
 db.Talent.belongsTo(db.Freelance, {
-    as: "talent",
+   /* as: "talent",*/
     foreignKey: "freelancer_id",
     onDelete: "CASCADE",
 });

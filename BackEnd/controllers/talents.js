@@ -1,4 +1,4 @@
-const {Talent} = require('../orm')
+const { Talent } = require('../orm')
 
 
 module.exports = {
@@ -7,7 +7,7 @@ module.exports = {
       const talents = await Talent.findAll({ order: [["createdAt", "DESC"]] });
       res.status(200).json(talents);
     } catch (error) {
-        console.log(error);
+      console.log(error);
       res.status(500).send("Failed to load resource");
     }
   },
@@ -29,6 +29,27 @@ module.exports = {
     } catch (error) {
       res.status(500).send("Failed to load resource");
     }
-  }
+  },
+
+
+  deleteTalent: async (req, res) => {
+    const { id } = req.params;
+
+    try {
+      // Find the talent by its primary key (id) and delete it
+      const deletedTalent = await Talent.findByPk(id);
+
+      if (!deletedTalent) {
+        return res.status(404).send("Talent not found");
+      }
+
+      await deletedTalent.destroy();
+
+      res.status(200).json({ message: "Talent deleted successfully" });
+    } catch (error) {
+      console.error(error);
+      res.status(500).send("Failed to delete talent");
+    }
+  },
 
 }
