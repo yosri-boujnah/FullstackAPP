@@ -52,4 +52,32 @@ module.exports = {
     }
   },
 
+  updateTalent: async (req, res) => {
+    try {
+
+      const talent = await Talent.findByPk(req.params.id);
+
+      if (talent) {
+
+        talent.title = req.body.title;
+        talent.description = req.body.description;
+        talent.imageUrl = req.body.imageUrl;
+        talent.price= req.body.price;
+        talent.category= req.body.category;
+        talent.rating= req.body.rating;
+        talent.freelancer_id= req.body.freelancer_id
+
+        await talent.save();
+
+        res.status(200).json(talent);
+      } else {
+
+        res.status(404).send("Talent not found");
+      }
+    } catch (error) {
+
+      console.error("Failed to update talent:", error);
+      res.status(500).send("Failed to update talent");
+    }
+  },
 }
