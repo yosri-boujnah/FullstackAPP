@@ -31,6 +31,9 @@ db.Talent.belongsTo(db.Freelance, {
     onDelete: "CASCADE",
 });
 
+db.Client.belongsToMany(db.Talent, { through: 'ClientTalent' });
+db.Talent.belongsToMany(db.Client, { through: 'ClientTalent' });
+
 db.sequelize
     .authenticate()
     .then(() => console.log("Connection has been established successfully."))
