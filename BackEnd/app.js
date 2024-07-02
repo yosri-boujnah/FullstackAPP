@@ -5,7 +5,7 @@ app.use(cors())
 app.use(express.json())
 const port = 5000
 
-
+const db = require ("./database/index.js")
 
 
 
