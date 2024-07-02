@@ -10,14 +10,15 @@ const sequelize = new Sequelize(config.database, config.user, config.password, {
 
 //Create and export a db object which holds the sequelize models,
 //with the respective associations.
+
 const db = {};
 
 db.Sequelize = Sequelize;
 
-db.Client = require('./client.model')
-db.Freelances = require('./freelances.model')
-db.Talents = require('./talents.model')
-db.Talents_has_client= require('./talentsClient.model')
+db.Client = require('./client.model')(sequelize, DataTypes)
+db.Freelances = require('./freelances.model')(sequelize, DataTypes)
+db.Talents = require('./talents.model')(sequelize, DataTypes)
+
 
 
 
