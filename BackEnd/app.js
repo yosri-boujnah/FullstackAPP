@@ -6,13 +6,18 @@ app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 const port = 5000
 
+const bodyParser = require('body-parser');
+
 const db= require('./orm/index.js')
 const routersTalents = require ("./routes/talents.js")
-
+const routerFreelance=require("./routes/freelance.js")
+app.use(bodyParser.json());
 
 app.get("/",(req,res)=>{
     res.send("Hello new Projekt")
 })
+
+app.use('/api/freelance', routerFreelance)
 
 app.use('/api/talents',routersTalents)
 
