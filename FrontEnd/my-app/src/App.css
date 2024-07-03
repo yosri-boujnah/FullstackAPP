@@ -1,42 +1,385 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-}
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+body{
+  font-family:Raleway;
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+nav{
+  font-size: 15px;
+  margin-top: 10px;
 }
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.get-started {
+	-webkit-animation: get-started 5s infinite both;
+	        animation: get-started 5s infinite both;
 }
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+@-webkit-keyframes get-started {
+  0%,
+  100% {
+    -webkit-transform: translateX(0%);
+            transform: translateX(0%);
+    -webkit-transform-origin: 50% 50%;
+            transform-origin: 50% 50%;
   }
-  to {
-    transform: rotate(360deg);
+  15% {
+    -webkit-transform: translateX(-30px) rotate(6deg);
+            transform: translateX(-30px) rotate(6deg);
+  }
+  30% {
+    -webkit-transform: translateX(15px) rotate(-6deg);
+            transform: translateX(15px) rotate(-6deg);
+  }
+  45% {
+    -webkit-transform: translateX(-15px) rotate(3.6deg);
+            transform: translateX(-15px) rotate(3.6deg);
+  }
+  60% {
+    -webkit-transform: translateX(9px) rotate(-2.4deg);
+            transform: translateX(9px) rotate(-2.4deg);
+  }
+  75% {
+    -webkit-transform: translateX(-6px) rotate(1.2deg);
+            transform: translateX(-6px) rotate(1.2deg);
+  }
+}
+@keyframes get-started {
+  0%,
+  100% {
+    -webkit-transform: translateX(0%);
+            transform: translateX(0%);
+    -webkit-transform-origin: 50% 50%;
+            transform-origin: 50% 50%;
+  }
+  15% {
+    -webkit-transform: translateX(-30px) rotate(6deg);
+            transform: translateX(-30px) rotate(6deg);
+  }
+  30% {
+    -webkit-transform: translateX(15px) rotate(-6deg);
+            transform: translateX(15px) rotate(-6deg);
+  }
+  45% {
+    -webkit-transform: translateX(-15px) rotate(3.6deg);
+            transform: translateX(-15px) rotate(3.6deg);
+  }
+  60% {
+    -webkit-transform: translateX(9px) rotate(-2.4deg);
+            transform: translateX(9px) rotate(-2.4deg);
+  }
+  75% {
+    -webkit-transform: translateX(-6px) rotate(1.2deg);
+            transform: translateX(-6px) rotate(1.2deg);
+  }
+}
+.talent-card{
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  height: 408px;
+}
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 15px;
+  width: 300px;
+  height: 100px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 14px;
+}
+.content::before {
+  content: "";
+  position: absolute;
+  left: 0%;
+  top: 50%;
+  transform: translateY(-50%);
+  bottom: 0;
+  width: 40px;
+  height: 96px;
+  background-image: linear-gradient(90deg, #0000001c, transparent);
+  z-index: 2;
+  border-radius: 10px 0 0 10px;
+}
+.content::after {
+  content: "";
+  position: absolute;
+  right: 0%;
+  top: 50%;
+  transform: translateY(-50%);
+  bottom: 0;
+  width: 40px;
+  height: 96px;
+  background-image: linear-gradient(-90deg, #0000001c, transparent);
+  z-index: 9;
+  border-radius: 0 10px 10px 0;
+}
+.basic-marquee {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+}
+.basic-marquee .button {
+  transition: all 0.3s ease;
+}
+.basic-marquee .button:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}
+.basic-marquee-1 {
+  animation: marquee 15s linear infinite;
+}
+.basic-marquee-2 {
+  animation: marquee 21s linear infinite;
+}
+.benefits {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 15px;
+  min-width: 900px;
+  height: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  position: absolute;
+  inset: 0;
+}
+@keyframes marquee {
+  0% {
+    transform: translateX(-10%);
+  }
+  100% {
+    transform: translateX(-50%);
   }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+.basic-marquee svg {
+  width: 40px;
+}
+.basic-marquee button {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cls-1 {
+  fill: #1ab7ea;
+}
+
+.cls-1,
+.cls-2 {
+  fill-rule: evenodd;
+}
+
+.cls-2 {
+  fill: #fff;
+}
+
+.cls-3 {
+  fill: #ee8208;
+  fill-rule: evenodd;
+}
+
+.cls-4 {
+  fill: #fff;
+}
+
+.cls-5,
+.cls-6 {
+  fill-rule: evenodd;
+}
+
+.cls-5 {
+  fill: #48dd55;
+}
+
+.cls-6 {
+  fill: #fff;
+}
+
+.cls-7 {
+  fill: #0a66c2;
+}
+
+.cls-7,
+.cls-8 {
+  fill-rule: evenodd;
+}
+
+.cls-8 {
+  fill: #fff;
+}
+
+.cls-9 {
+  fill: #10b7f4;
+}
+
+.cls-9,
+.cls-10 {
+  fill-rule: evenodd;
+}
+
+.cls-10 {
+  fill: #fff;
+}
+
+.cls-11 {
+  fill: #1da1f2;
+}
+
+.cls-11,
+.cls-12 {
+  fill-rule: evenodd;
+}
+
+.cls-12 {
+  fill: #fff;
+}
+
+.cls-13 {
+  fill: #ea4c89;
+}
+
+.cls-13,
+.cls-14 {
+  fill-rule: evenodd;
+}
+
+.cls-14 {
+  fill: #fff;
+}
+
+.cls-15 {
+  fill: #1769ff;
+}
+
+.cls-15,
+.cls-16 {
+  fill-rule: evenodd;
+}
+
+.cls-16 {
+  fill: #fff;
+}
+
+.cls-17 {
+  fill: #f26522;
+}
+
+.cls-17,
+.cls-18 {
+  fill-rule: evenodd;
+}
+
+.cls-18 {
+  fill: #fff;
+}
+.ligne{
+  width: 20%;
+}
+.join-us{
+  margin-left: 6.8rem;
+}
+.quick-links{
+  margin-left: 36rem;
+}
+.contact-us{
+  margin-left: 56rem;
+}
+.copyright{
+  height: 30px;
+}
+.client{
+  width: 210px;
+  height: 200px;
+}
+.freelancer{
+  width: 210px;
+  height: 200px;
+}
+container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.container {
+  display: block;
+  position: relative;
+  cursor: pointer;
+  font-size: 1.2rem;
+  user-select: none;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+  --clr: #0B6E4F;
+  position: relative;
+  top: 0;
+  left: 0;
+  height: 1.3em;
+  width: 1.3em;
+  background-color: #ccc;
+  border-radius: 50%;
+  transition: 300ms;
+}
+
+/* When the checkbox is checked, add a blue background */
+.container input:checked ~ .checkmark {
+  background-color: #108a00;
+  border-radius: .5rem;
+  animation: pulse 500ms ease-in-out;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.container .checkmark:after {
+  left: 0.45em;
+  top: 0.25em;
+  width: 0.25em;
+  height: 0.5em;
+  border: solid #E0E0E2;
+  border-width: 0 0.15em 0.15em 0;
+  transform: rotate(45deg);
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 #108a00;
+    rotate: 20deg;
+  }
+
+  50% {
+    rotate: -20deg;
+  }
+
+  75% {
+    box-shadow: 0 0 0 10px #108a00;
+  }
+
+  100% {
+    box-shadow: 0 0 0 13px #108a00;
+    rotate: 0;
   }
 }
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
+.sign-up-form{
+  margin-left: 35rem;
+  margin-top: 20px;
 }

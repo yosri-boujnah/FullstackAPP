@@ -1,34 +1,33 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import { BrowserRouter as Router,  Route, Routes } from "react-router-dom";
+import { useState } from 'react';
+import NavBar from './component/NavBar.jsx';
+import Home from './component/pages/Home.jsx';
+import Footer from './component/Footer.jsx';
+import SignUpRole from './component/pages/SignUpRole.jsx';
+import SignUpForm from './component/pages/SignUpForm.jsx'
+import Programming from './component/pages/Programming.jsx';
+import Graphics from './component/pages/Graphics.jsx'
+import DigitalMarketting from './component/pages/DigitalMarketting.jsx';
+import Login from './component/pages/Login.jsx';
+
 
 function App() {
-  const [count, setCount] = useState(0)
-
+  const [role,setRole]=useState('')
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <Router>
+       <NavBar/>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/sign-up-role" element={<SignUpRole setRole={setRole} role={role}/>} />
+        <Route path="/sign-up-form" element={<SignUpForm role={role}/>} />
+        <Route path="/login" element={<Login/>} />
+        <Route path="/programming" element={<Programming />} />
+        <Route path="/graphics" element={<Graphics />} />
+        <Route path="/digital-marketting" element={<DigitalMarketting />} />
+      </Routes>
+       <Footer/>
+    </Router>
   )
 }
 
