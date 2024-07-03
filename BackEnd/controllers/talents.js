@@ -95,4 +95,16 @@ module.exports = {
     }
   },
 
+  findByCategory: async (req, res) => {
+    const category = req.params.category
+    try {
+      const talent = await Talent.findOne({  where: {
+        category: category,
+      } });
+      res.status(200).json(talent);
+    } catch (error) {
+      res.status(500).send("Failed to load resource");
+    }
+  },
+
 }

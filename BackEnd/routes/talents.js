@@ -3,7 +3,7 @@ const router = express.Router()
 
 
 const { getAllTalents,addTalent,getOneTalent,deleteTalent,
-    updateTalent,findByTitle} = require('../controllers/talents.js');
+    updateTalent,findByTitle,findByCategory} = require('../controllers/talents.js');
 
 
 
@@ -13,6 +13,7 @@ router.get('/getAll/:id',getOneTalent)
 router.delete('/:id',deleteTalent)
 router.put('/:id',updateTalent)
 router.get('/title/:title',findByTitle)
+router.get('/category/:category',findByCategory)
 
 
 
