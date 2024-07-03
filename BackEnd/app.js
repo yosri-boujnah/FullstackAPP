@@ -11,6 +11,7 @@ const bodyParser = require('body-parser');
 const db= require('./orm/index.js')
 const routersTalents = require ("./routes/talents.js")
 const routerFreelance=require("./routes/freelance.js")
+const routesClient = require("./routes/client.js")
 app.use(bodyParser.json());
 
 app.get("/",(req,res)=>{
@@ -18,7 +19,7 @@ app.get("/",(req,res)=>{
 })
 
 app.use('/api/freelance', routerFreelance)
-
+app.use('/api/client',routesClient)
 app.use('/api/talents',routersTalents)
 
 app.listen(port,()=>{
