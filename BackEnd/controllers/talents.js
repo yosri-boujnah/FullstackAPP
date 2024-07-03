@@ -1,17 +1,19 @@
-const { Talent } = require('../orm')
+const { Talent,Freelance } = require('../orm')
 
 
 module.exports = {
   getAllTalents: async (req, res) => {
     try {
-      const talents = await Talent.findAll({ order: [["createdAt", "DESC"]] });
+      const talents = await Talent.findAll({
+         order: [["createdAt", "DESC"]] 
+          
+        });
       res.status(200).json(talents);
     } catch (error) {
       console.log(error);
       res.status(500).send("Failed to load resource");
     }
   },
-
 
   addTalent: async (req, res) => {
     try {
@@ -80,4 +82,17 @@ module.exports = {
       res.status(500).send("Failed to update talent");
     }
   },
+
+  findByTitle: async (req, res) => {
+    const title = req.params.title
+    try {
+      const talent = await Talent.findOne({  where: {
+        title: title,
+      } });
+      res.status(200).json(talent);
+    } catch (error) {
+      res.status(500).send("Failed to load resource");
+    }
+  },
+
 }
