@@ -14,6 +14,7 @@ import Login from './component/pages/Login.jsx';
 
 function App() {
   const [role,setRole]=useState('')
+  console.log(role);
   return (
     <Router>
        <NavBar/>
