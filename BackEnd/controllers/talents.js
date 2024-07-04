@@ -1,6 +1,7 @@
 const { Talent, Freelance } = require('../orm')
 const { cloudinary } = require('../utils/cloudinary.js');
 
+
 module.exports = {
   getAllTalents: async (req, res) => {
     try {
@@ -123,6 +124,7 @@ module.exports = {
       console.error(err);
       res.status(500).json({ err: 'Something went wrong' });
     }
+         
   },
 
   getImages: async (req, res) => {

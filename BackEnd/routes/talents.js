@@ -2,10 +2,11 @@ const express = require('express')
 const router = express.Router()
 
 
+
 const { getAllTalents,addTalent,getOneTalent,deleteTalent,
-    updateTalent,findByTitle,findByCategory} = require('../controllers/talents.js');
+    updateTalent,findByTitle,findByCategory,upload,getImages} = require('../controllers/talents.js');
 
-
+   
 
 router.get('/getAll', getAllTalents)
 router.post('/add',addTalent)
@@ -14,6 +15,9 @@ router.delete('/:id',deleteTalent)
 router.put('/:id',updateTalent)
 router.get('/title/:title',findByTitle)
 router.get('/category/:category',findByCategory)
+router.get('/images',getImages)
+router.post('/upload',upload)
+
 
 
 
