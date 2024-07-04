@@ -1,0 +1,68 @@
+{
+    "clients": [
+        {
+            "name": "Wala",
+            "email": "wala@gmail.com",
+            "adress": "Sousse",
+            "phoneNumber": "99258635",
+            "imageUrl": "https://moimonavenircom.b-cdn.net/wp-content/uploads/istock-501294464-760x540.jpg"
+        },
+        {
+            "username": "Ahmed",
+            "email": "ahmed@gmail.com",
+            "adress": "Tunis",
+            "phoneNumber": "975846856",
+            "imageUrl": "https://storage.canalblog.com/32/72/1228697/127715036_o.jpg"
+        },
+        {
+            "username": "Houda",
+            "email": "houda@gmail.com",
+            "adress": "Sfax",
+            "phoneNumber": "25258639",
+            "imageUrl": "https://img.freepik.com/photos-gratuite/sourire-confiant-femme-affaires-posant-bras-croises_1262-20950.jpg"
+        }
+    ],
+    "freelancer": [
+        {
+            "name": "Ahmed",
+            "email": "ahmed@gmail.com",
+            "adress": "Sousse",
+            "phoneNumber": "99258635",
+            "imageUrl": "https://c8.alamy.com/compfr/2gyww6d/confiance-professionnelle-portrait-d-homme-confiant-isole-sur-blanc-un-homme-professionnel-heureux-2gyww6d.jpg"
+        },
+        {
+            "name": "Amir",
+            "email": "amir@gmail.com",
+            "adress": "Tunis",
+            "phoneNumber": "58698214",
+            "imageUrl": "https://www.karine-s.net/wp-content/uploads/2020/04/photo-corporate-CV-professionnelle-5.jpg"
+        },
+        {
+            "name": "Amira",
+            "email": "amira@gmail.com",
+            "adress": "Sfax",
+            "phoneNumber": "97258635",
+            "imageUrl": "https://i.pinimg.com/236x/73/dd/5e/73dd5e992def279251499c528cc94562.jpg"
+        }
+    ],
+    "talents": [
+        {
+            "title": "ReactJs",
+            " description": "React JS | React Developer | Front End Developer | Reactjs | Figma to",
+            "imageUrl": "http://localhost:5173/src/image/skill.jpg",
+            "price:": "200",
+            "category": "It",
+            "rating": "3",
+            "freelancer_id": "1"
+        },
+        {
+            "title": "NodeJs",
+            " description": "React JS | React Developer | Front End Developer | Reactjs | Figma to",
+            "imageUrl": "http://localhost:5173/src/image/skill.jpg",
+            "price:": "400",
+            "category": "It",
+            "rating": "2",
+            "freelancer_id": "1"
+        }
+    ]
+}

@@ -25,10 +25,22 @@ const CreateTalent = (props) => {
             })
         } catch (error) {
             console.log(error)
-        } 
+        }
 
     }
-  
+
+    const upload = async () => {
+        try {
+            await axios.post("/api/talents/upload").then((result) => {
+                console.log(result)
+            })
+
+        } catch (err) {
+            console.error(err);
+
+        }
+    };
+
     return (
         <div>
 
