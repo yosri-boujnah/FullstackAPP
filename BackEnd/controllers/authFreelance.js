@@ -72,35 +72,4 @@ const authController = {
     }
   }
 }
-// login: async (req, res) => {
-//     const {errors , isValid} = validateSignIn(req.body )
-//     try {
-  
-//     if (!isValid){
-//    res.status(404).json(errors)
-//     }
-//     else {
-//         Freelance.findOne({ where: { email: req.body.email } })
-
-//       .then(user =>{
-//           if (!user){
-//               res.status(404).json({message : " not found "})
-//           }
-//           else {
-//               res.send(user)
-//           }
-
-//           var token = jwt.sign({ email: user.email}, process.env.JWT_SECRET ||'shhhhh',  { expiresIn: '1h' });
-
-//            res.status(200).json({
-//              message: "success",
-//              token: "Bearer "+`${token}`
-//            })
-//       })
-//     }
-//     } catch (error) {
-//         console.error('Error in login:', error);
-//       res.status(404).json(error);
-//     }
-// }
 module.exports = authController;

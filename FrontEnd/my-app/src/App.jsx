@@ -13,7 +13,7 @@ import Login from './component/pages/Login.jsx';
 
 function App() {
   const [SignUprole,setSignUpRole]=useState('')
-  const [userRole,setUserRole]=useState('')
+  const [userRole,setUserRole]=useState('freelancer')
   return (
     <Router>
        <NavBar userRole={userRole}/>
