@@ -7,89 +7,106 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,N
 -- -----------------------------------------------------
 -- Schema mydb
 -- -----------------------------------------------------
-
--- -----------------------------------------------------
--- Schema mydb
--- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `mydb` DEFAULT CHARACTER SET utf8 ;
 -- -----------------------------------------------------
 -- Schema talentlink
 -- -----------------------------------------------------
-USE `mydb` ;
 
 -- -----------------------------------------------------
--- Table `mydb`.`client`
+-- Schema talentlink
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`client` (
+CREATE SCHEMA IF NOT EXISTS `talentlink` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci ;
+USE `talentlink` ;
+
+-- -----------------------------------------------------
+-- Table `talentlink`.`clients`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `talentlink`.`clients` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `name` VARCHAR(100) NOT NULL,
-  `email` VARCHAR(100) NOT NULL,
-  `password` VARCHAR(100) NOT NULL,
-  `adress` VARCHAR(100) NOT NULL,
+  `name` VARCHAR(255) NOT NULL,
+  `email` VARCHAR(255) NOT NULL,
+  `password` VARCHAR(255) NOT NULL,
+  `adress` VARCHAR(255) NOT NULL,
   `phoneNumber` INT NOT NULL,
-  `imageUrl` VARCHAR(250) NOT NULL,
-  PRIMARY KEY (`id`))
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `mydb`.`freelances`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`freelances` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `name` VARCHAR(100) NOT NULL,
-  `email` VARCHAR(100) NOT NULL,
-  `password` VARCHAR(100) NOT NULL,
-  `adress` VARCHAR(45) NOT NULL,
-  `phoneNumber` INT NOT NULL,
-  `imageUrl` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`id`))
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `mydb`.`talents`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`talents` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `title` VARCHAR(150) NOT NULL,
-  `descreption` VARCHAR(1000) NOT NULL,
-  `imageUrl` VARCHAR(250) NOT NULL,
-  `price` VARCHAR(45) NOT NULL,
-  `category` VARCHAR(45) NOT NULL,
-  `rating` VARCHAR(45) NOT NULL,
-  `freelances_id` INT NOT NULL,
+  `imageUrl` VARCHAR(255) NOT NULL,
+  `createdAt` DATETIME NOT NULL,
+  `updatedAt` DATETIME NOT NULL,
   PRIMARY KEY (`id`),
-  INDEX `fk_talents_freelances_idx` (`freelances_id` ASC) VISIBLE,
-  CONSTRAINT `fk_talents_freelances`
-    FOREIGN KEY (`freelances_id`)
-    REFERENCES `mydb`.`freelances` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
+  UNIQUE INDEX `email` (`email` ASC) VISIBLE)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`talents_has_client`
+-- Table `talentlink`.`talents`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`talents_has_client` (
-  `talents_id` INT NOT NULL,
-  `client_id` INT NOT NULL,
-  PRIMARY KEY (`talents_id`, `client_id`),
-  INDEX `fk_talents_has_client_client1_idx` (`client_id` ASC) VISIBLE,
-  INDEX `fk_talents_has_client_talents1_idx` (`talents_id` ASC) VISIBLE,
-  CONSTRAINT `fk_talents_has_client_talents1`
-    FOREIGN KEY (`talents_id`)
-    REFERENCES `mydb`.`talents` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_talents_has_client_client1`
-    FOREIGN KEY (`client_id`)
-    REFERENCES `mydb`.`client` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
+CREATE TABLE IF NOT EXISTS `talentlink`.`talents` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `title` VARCHAR(255) NOT NULL,
+  `description` VARCHAR(255) NOT NULL,
+  `imageUrl` VARCHAR(255) NOT NULL,
+  `price` INT NOT NULL,
+  `category` VARCHAR(255) NOT NULL,
+  `rating` VARCHAR(255) NOT NULL,
+  `freelancer_id` INT NULL DEFAULT NULL,
+  `createdAt` DATETIME NOT NULL,
+  `updatedAt` DATETIME NOT NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB
+AUTO_INCREMENT = 10
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
 
+
+-- -----------------------------------------------------
+-- Table `talentlink`.`clienttalent`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `talentlink`.`clienttalent` (
+  `createdAt` DATETIME NOT NULL,
+  `updatedAt` DATETIME NOT NULL,
+  `clientId` INT NOT NULL,
+  `talentId` INT NOT NULL,
+  PRIMARY KEY (`clientId`, `talentId`),
+  INDEX `talentId` (`talentId` ASC) VISIBLE,
+  CONSTRAINT `clienttalent_ibfk_1`
+    FOREIGN KEY (`clientId`)
+    REFERENCES `talentlink`.`clients` (`id`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  CONSTRAINT `clienttalent_ibfk_2`
+    FOREIGN KEY (`talentId`)
+    REFERENCES `talentlink`.`talents` (`id`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
+
+
+-- -----------------------------------------------------
+-- Table `talentlink`.`freelancers`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `talentlink`.`freelancers` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(255) NOT NULL,
+  `email` VARCHAR(255) NOT NULL,
+  `password` VARCHAR(255) NOT NULL,
+  `adress` VARCHAR(255) NOT NULL,
+  `phoneNumber` INT NOT NULL,
+  `imageUrl` VARCHAR(255) NOT NULL,
+  `createdAt` DATETIME NOT NULL,
+  `updatedAt` DATETIME NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE INDEX `email` (`email` ASC) VISIBLE)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
+INSERT INTO freelances (name, email, password,adress,phoneNumber,imageUrl)
+VALUES
+("Jane Smith","jane.smith@example.com","password123","789 Maple Avenue"," 2345678901", "https://th.bing.com/th/id/OIP.PXi4EiZawvGKuExNdb8iJwHaE7?w=297&h=198&c=7&r=0&o=5&dpr=1.3&pid=1.7")
+("Michael Johnson", "michael.johnson@example.com","password123", "101 Main Road, Gotham", "3456789012","https://th.bing.com/th/id/OIP.i_bAvIgZVwOB-3yN_pEDawAAAA?w=278&h=184&c=7&r=0&o=5&dpr=1.3&pid=1.7")
+( "Emily Davis","emily.davis@example.com", "password123","202 Oak Lane, Star City","4567890123", "https://th.bing.com/th/id/OIP.w8m9TH-Z8hyvBu_9NMLvNgHaFj?w=200&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7")
+("Robert Brown","robert.brown@example.com", "password123","303 Pine Street, Central City", "5678901234","https://th.bing.com/th/id/OIP.I6BrdBbXGxqeZHZdJadSagAAAA?w=311&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7")
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
