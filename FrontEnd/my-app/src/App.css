@@ -383,3 +383,13 @@ container input {
   margin-left: 35rem;
   margin-top: 20px;
 }
+.order-number{
+  height: 21px;
+  width: 21px;
+  background-color: #ce0606;
+  border-radius: 50%;
+  color: #fff;
+}
+.order-number span{
+  margin-top: -3px;
+}
