@@ -19,9 +19,6 @@ app.get("/", (req, res) => {
 })
 
 
-
-
-
 app.use('/api/freelance', routerFreelance)
 app.use('/api/client', routesClient)
 app.use('/api/talents', routersTalents)

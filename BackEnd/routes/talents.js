@@ -21,9 +21,10 @@ async function handleUpload(file) {
     const res = await cloudinary.uploader.upload(file, {
         resource_type: "auto",
     });
-    return res;
+    return res
 }
 router.post("/upload", upload.single("my_file"), async (req, res) => {
+    
     try {
         const b64 = Buffer.from(req.file.buffer).toString("base64");
         let dataURI = "data:" + req.file.mimetype + ";base64," + b64;
@@ -33,9 +34,9 @@ router.post("/upload", upload.single("my_file"), async (req, res) => {
         console.log(error);
         res.send({
             message: error.message,
-        });
+        })
     }
-});
+})
 
 /*router.post('/upload', upload.single('image'), async (req, res) => {
     try {

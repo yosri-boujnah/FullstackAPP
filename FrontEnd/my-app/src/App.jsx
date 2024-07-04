@@ -1,6 +1,6 @@
 import './App.css'
 import { BrowserRouter as Router,  Route, Routes } from "react-router-dom";
-import { useState ,useEffect} from 'react';
+import { useState } from 'react';
 import NavBar from './component/NavBar.jsx';
 import Home from './component/pages/Home.jsx';
 import Footer from './component/Footer.jsx';
@@ -11,15 +11,16 @@ import Graphics from './component/pages/Graphics.jsx'
 import DigitalMarketting from './component/pages/DigitalMarketting.jsx';
 import Login from './component/pages/Login.jsx';
 import CreateTalent from './component/pages/CreateTalent.jsx';
-import axios from 'axios';
-
+import axios from 'axios'
 
 function App() {
-  const [role,setRole]=useState('')
+  const [SignUprole,setSignUpRole]=useState('')
+  const [userRole,setUserRole]=useState('')
   const [talents, setTalents] = useState([])
   const [refetsch, setRefetsch] = useState(false)
+  
 
-  const fetchData = () => {
+  const getTalents = () => {
     axios.get('http://127.0.0.1:5000/api/talents/getAll').then((response) => {
       console.log(response.data)
       setTalents(response.data)
@@ -40,21 +41,20 @@ function App() {
   }
 
   useEffect(() => {
-   fetchData()
+ getTalents()
   }, [refetsch])
-
   return (
     <Router>
-       <NavBar/>
+       <NavBar userRole={userRole}/>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/sign-up-role" element={<SignUpRole setRole={setRole} role={role}/>} />
-        <Route path="/sign-up-form" element={<SignUpForm role={role}/>} />
+        <Route path="/sign-up-role" element={<SignUpRole setSignUpRole={setSignUpRole} role={SignUprole}/>} />
+        <Route path="/sign-up-form" element={<SignUpForm role={SignUprole}/>} />
         <Route path="/login" element={<Login/>} />
         <Route path="/programming" element={<Programming />} />
         <Route path="/graphics" element={<Graphics />} />
         <Route path="/digital-marketting" element={<DigitalMarketting />} />
-        <Route path="/createTalent" element={<CreateTalent add={postTalent} />} />
+        <Route path="/addtalent" element={<CreateTalent add={postTalent}/>}></Route>
       </Routes>
        <Footer/>
     </Router>
