@@ -20,9 +20,20 @@ const freelancer ={
 const signupFreelancer=(newData)=>{
     axios.post('http://localhost:5000/api/freelance/register',newData)
     .then((response) => {
-+        console.log('User registered successfully:', response.data);
+       console.log('User registered successfully:', response.data);
       }).catch((error)=>{console.log(error);})
 }
+
+
+
+const signupClient = (addClient)=>{
+    axios.post('http://127.0.0.1:5000/api/client/signup',addClient)
+    .then((res)=>{
+        console.log('User registered successfully:');
+    }).catch((error)=>{console.log(error)})
+}
+
+
   return (
     <div className='flex flex-col'>
         {props.role==='client' && <h3 className='text-3xl font-medium flex justify-center mt-10'>Sign up to hire talent</h3> }
@@ -89,7 +100,7 @@ const signupFreelancer=(newData)=>{
                 <input type="file" id="image" name="image" class="outline-none appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" accept="image/*" required onChange={(e)=>{setImage(e.target.value)}}/>
             </div>
             
-            <button type="submit" class=" ml-28 mt-8 bg-[#108a00] hover:bg-[#3d9731] text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" onClick={()=>signupFreelancer(freelancer)} >Sign Up</button>
+            <button type="submit" class=" ml-28 mt-8 bg-[#108a00] hover:bg-[#3d9731] text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" onClick={()=>signupClient(freelancer)} >Sign Up</button>
            <h3 className='mt-10 ml-10'>Already have an account? <NavLink className='font-semibold leading-6 text-[#108a00] ml-4' to='/login'>Login</NavLink></h3>
         </form>
     </div>
