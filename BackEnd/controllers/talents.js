@@ -1,13 +1,13 @@
-const { Talent,Freelance } = require('../orm')
+const { Talent, Freelance } = require('../orm')
 
 
 module.exports = {
   getAllTalents: async (req, res) => {
     try {
       const talents = await Talent.findAll({
-         order: [["createdAt", "DESC"]] 
-          
-        });
+        order: [["createdAt", "DESC"]]
+
+      });
       res.status(200).json(talents);
     } catch (error) {
       console.log(error);
@@ -64,10 +64,10 @@ module.exports = {
         talent.title = req.body.title;
         talent.description = req.body.description;
         talent.imageUrl = req.body.imageUrl;
-        talent.price= req.body.price;
-        talent.category= req.body.category;
-        talent.rating= req.body.rating;
-        talent.freelancer_id= req.body.freelancer_id
+        talent.price = req.body.price;
+        talent.category = req.body.category;
+        talent.rating = req.body.rating;
+        talent.freelancer_id = req.body.freelancer_id
 
         await talent.save();
 
@@ -86,9 +86,11 @@ module.exports = {
   findByTitle: async (req, res) => {
     const title = req.params.title
     try {
-      const talent = await Talent.findOne({  where: {
-        title: title,
-      } });
+      const talent = await Talent.findOne({
+        where: {
+          title: title,
+        }
+      });
       res.status(200).json(talent);
     } catch (error) {
       res.status(500).send("Failed to load resource");
@@ -98,13 +100,17 @@ module.exports = {
   findByCategory: async (req, res) => {
     const category = req.params.category
     try {
-      const talent = await Talent.findOne({  where: {
-        category: category,
-      } });
+      const talent = await Talent.findOne({
+        where: {
+          category: category,
+        }
+      });
       res.status(200).json(talent);
     } catch (error) {
       res.status(500).send("Failed to load resource");
     }
   },
+
+ 
 
 }
