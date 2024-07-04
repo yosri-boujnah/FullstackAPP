@@ -1,6 +1,6 @@
 import './App.css'
 import { BrowserRouter as Router,  Route, Routes } from "react-router-dom";
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import NavBar from './component/NavBar.jsx';
 import Home from './component/pages/Home.jsx';
 import Footer from './component/Footer.jsx';
@@ -15,7 +15,7 @@ import axios from 'axios'
 
 function App() {
   const [SignUprole,setSignUpRole]=useState('')
-  const [userRole,setUserRole]=useState('')
+  const [userRole,setUserRole]=useState('freelancer')
   const [talents, setTalents] = useState([])
   const [refetsch, setRefetsch] = useState(false)
   
@@ -48,6 +48,8 @@ function App() {
        <NavBar userRole={userRole}/>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/sign-up-role" element={<SignUpRole setSignUpRole={setSignUpRole} role={SignUprole}/>} />
+        <Route path="/sign-up-form" element={<SignUpForm role={SignUprole}/>} />
         <Route path="/sign-up-role" element={<SignUpRole setSignUpRole={setSignUpRole} role={SignUprole}/>} />
         <Route path="/sign-up-form" element={<SignUpForm role={SignUprole}/>} />
         <Route path="/login" element={<Login/>} />

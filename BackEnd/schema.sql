@@ -101,7 +101,12 @@ CREATE TABLE IF NOT EXISTS `talentlink`.`freelancers` (
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
-
+INSERT INTO freelances (name, email, password,adress,phoneNumber,imageUrl)
+VALUES
+("Jane Smith","jane.smith@example.com","password123","789 Maple Avenue"," 2345678901", "https://th.bing.com/th/id/OIP.PXi4EiZawvGKuExNdb8iJwHaE7?w=297&h=198&c=7&r=0&o=5&dpr=1.3&pid=1.7")
+("Michael Johnson", "michael.johnson@example.com","password123", "101 Main Road, Gotham", "3456789012","https://th.bing.com/th/id/OIP.i_bAvIgZVwOB-3yN_pEDawAAAA?w=278&h=184&c=7&r=0&o=5&dpr=1.3&pid=1.7")
+( "Emily Davis","emily.davis@example.com", "password123","202 Oak Lane, Star City","4567890123", "https://th.bing.com/th/id/OIP.w8m9TH-Z8hyvBu_9NMLvNgHaFj?w=200&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7")
+("Robert Brown","robert.brown@example.com", "password123","303 Pine Street, Central City", "5678901234","https://th.bing.com/th/id/OIP.I6BrdBbXGxqeZHZdJadSagAAAA?w=311&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7")
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
