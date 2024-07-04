@@ -11,17 +11,16 @@ import Graphics from './component/pages/Graphics.jsx'
 import DigitalMarketting from './component/pages/DigitalMarketting.jsx';
 import Login from './component/pages/Login.jsx';
 
-
 function App() {
-  const [role,setRole]=useState('')
-  console.log(role);
+  const [SignUprole,setSignUpRole]=useState('')
+  const [userRole,setUserRole]=useState('freelancer')
   return (
     <Router>
-       <NavBar/>
+       <NavBar userRole={userRole}/>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/sign-up-role" element={<SignUpRole setRole={setRole} role={role}/>} />
-        <Route path="/sign-up-form" element={<SignUpForm role={role}/>} />
+        <Route path="/sign-up-role" element={<SignUpRole setSignUpRole={setSignUpRole} role={SignUprole}/>} />
+        <Route path="/sign-up-form" element={<SignUpForm role={SignUprole}/>} />
         <Route path="/login" element={<Login/>} />
         <Route path="/programming" element={<Programming />} />
         <Route path="/graphics" element={<Graphics />} />
